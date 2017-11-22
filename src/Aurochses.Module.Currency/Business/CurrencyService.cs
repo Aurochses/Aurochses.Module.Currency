@@ -1,4 +1,5 @@
-﻿using Aurochses.Module.Currency.Business.Contract;
+﻿using Aurochses.Data.Helpers;
+using Aurochses.Module.Currency.Business.Contract;
 using Aurochses.Module.Currency.Data.Contract;
 
 namespace Aurochses.Module.Currency.Business
