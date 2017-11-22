@@ -86,7 +86,8 @@ namespace Aurochses.Module.Currency.Tests.Business
             const int id = 840;
 
             var mockRepository = new Mock<IRepository<CurrencyEntity, int>>(MockBehavior.Strict);
-            mockRepository.Setup(x => x.Delete(id)).Verifiable();
+            mockRepository.Setup(x => x.Get(It.IsAny<QueryParameters<CurrencyEntity, int>>())).Returns(new CurrencyEntity { Id = id });
+            mockRepository.Setup(x => x.Delete(It.Is<CurrencyEntity>(entity => entity.Id == id))).Verifiable();
 
             var mockUnitOfWork = new Mock<ICurrencyUnitOfWork>(MockBehavior.Strict);
             mockUnitOfWork.SetupGet(x => x.CurrencyRepository).Returns(mockRepository.Object);
